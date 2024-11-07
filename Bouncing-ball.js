@@ -43,3 +43,36 @@ function bouncingBall(h,  bounce,  window) {
 }
 
 // or
+
+function bouncingBall(h,  bounce,  window) {
+  // your code here
+  const isHeightValid = h > 0;
+  const isBounceValid = bounce > 0 && bounce < 1;
+  const isWindowValid = window < h;
+  
+  if (isHeightValid && isBounceValid && isWindowValid) {
+
+    let currentHeight = h;
+    let sightings = 0;
+    const calculateCurrentHeight = (height, bounce) => {
+      const newHeight = height * bounce;
+      return newHeight;
+    }
+    
+    while(currentHeight > window) {
+      // before bounce sighting
+      sightings += 1;
+      
+      currentHeight = calculateCurrentHeight(currentHeight, bounce);
+      
+      if (currentHeight > window) {
+        sightings += 1;
+      }
+    }
+    
+    return sightings;
+  
+  } else {
+      return -1
+  }
+}
